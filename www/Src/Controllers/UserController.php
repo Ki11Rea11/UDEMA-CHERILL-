@@ -4,6 +4,7 @@ namespace Src\Controllers;
 
 use Laminas\Diactoros\Response\RedirectResponse;
 use Laminas\Diactoros\ServerRequest;
+use MiladRahimi\PhpRouter\View\View;
 use ORM;
 
 class UserController
@@ -67,7 +68,13 @@ class UserController
         unset($_SESSION['user_id']);
         return new RedirectResponse('/');
     }
-
+    public function userprofilePage(View $view)
+    {
+        $user=ORM::forTable('users')->find_one($_SESSION['user_id']);
+        return $view->make('udema.user-profile',[
+            'user'=>$user,
+        ]);
+    }
 
 
 }
