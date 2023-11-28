@@ -38,10 +38,7 @@ $router->group(
     function (Router $router){
 
     });
-    $router->get('/clear-session',function (){
-        unset($_SESSION['user_id']);
-        return new RedirectResponse('/');
-    });
+    $router->get('/clear-session',[UserController::class,'clearSession']);
 });
 
 

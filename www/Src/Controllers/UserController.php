@@ -62,6 +62,12 @@ class UserController
 
     }
 
+    public function clearSession()
+    {
+        unset($_SESSION['user_id']);
+        return new RedirectResponse('/');
+    }
+
 
 
 }
