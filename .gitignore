@@ -5,4 +5,4 @@
 /logs/*
 .DS_Store
 /buildtest
-/www/vendor
+/www/vendor/
