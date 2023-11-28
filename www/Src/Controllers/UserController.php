@@ -29,23 +29,27 @@ class UserController
         $user = ORM::forTable('users')->find_one($_SESSION['user_id']);
             if ($params['old_email'] == $user['mail'] || !$params['old_email']){
                 if ($params['new_email'] == $params['confirm_new_email']){
-                    if (empty($params['new_email'])){
-                        $user->set(['mail'=>$user['mail']]);}
-                    else $user->set(['mail'=>$params['new_email']]);
-                    if (md5($params['old_password']) == $user['password'] || !$params['old_password']){
-                        if ($params['new_password'] == $params['confirm_new_password']){
-                            if (empty($params['new_password'])){
-                                $user->set(['password'=>$user['password']]);}
-                            else $user->set(['password'=>md5($params['new_password'])]);
-                            $random = bin2hex(random_bytes(10));
-                            $user->set([
-                                        'name'      => $params['name'],
-                                        'last_name' => $params['lastname'],
-                                        'phone'     => $params['phone'],
-                                        'info'      => $params['info'],
-                                    ]);
-                            $user->save();
-                            $_SESSION['error'] = 'Successful';
+                    if ($params['new_email'] !== $params['old_email']){
+                        if (empty($params['new_email'])){
+                            $user->set(['mail'=>$user['mail']]);}
+                        else $user->set(['mail'=>$params['new_email']]);
+                        if (md5($params['old_password']) == $user['password'] || !$params['old_password']){
+                            if ($params['new_password'] == $params['confirm_new_password']){
+                                if (empty($params['new_password'])){
+                                    $user->set(['password'=>$user['password']]);}
+                                else $user->set(['password'=>md5($params['new_password'])]);
+                                $random = bin2hex(random_bytes(10));
+                                $user->set([
+                                    'name'      => $params['name'],
+                                    'last_name' => $params['lastname'],
+                                    'phone'     => $params['phone'],
+                                    'info'      => $params['info'],
+                                ]);
+                                $user->save();
+                                $_SESSION['error'] = 'Successful';
+                                return new RedirectResponse('/user/profile');
+                            }
+                            $_SESSION['error'] = 'Old email = New email';
                             return new RedirectResponse('/user/profile');
                         }
                         $_SESSION['error'] = 'Wrong new or confirm password';

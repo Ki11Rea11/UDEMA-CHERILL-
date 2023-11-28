@@ -2,34 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Udema a modern educational site template">
-    <meta name="author" content="Ansonika">
-    <title>UDEMA | Modern Educational site template</title>
-
-    <!-- Favicons-->
-    <link rel="shortcut icon" href="../../../udema/img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" type="image/x-icon" href="../../../udema/img/apple-touch-icon-57x57-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="../../../udema/img/apple-touch-icon-72x72-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="../../../udema/img/apple-touch-icon-114x114-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="../../../udema/img/apple-touch-icon-144x144-precomposed.png">
-
-    <!-- GOOGLE WEB FONT -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- BASE CSS -->
-    <link href="../../../udema/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../../udema/css/style.css" rel="stylesheet">
-	<link href="../../../udema/css/vendors.css" rel="stylesheet">
-	<link href="../../../udema/css/icon_fonts/css/all_icons.min.css" rel="stylesheet">
-	
-	<!-- SPECIFIC CSS -->
-	<link href="../../../udema/css/skins/square/grey.css" rel="stylesheet">
-
-    <!-- YOUR CUSTOM CSS -->
-    <link href="../../../udema/css/custom.css" rel="stylesheet">
+    <?php require "head.phtml"; ?>
 
 </head>
 <body>
@@ -169,11 +142,11 @@
 					<div class="box_list wow" >
 						<div class="row g-0" style="gap: 2em">
                             <?php foreach ($courses as $item): ?>
-                            <div style="display: flex; flex-direction: row; ">
+                            <div style="display: flex; flex-direction: row; position: relative ">
 							<div class="col-lg-5" >
 								<figure class="block-reveal">
 									<div class="block-horizzontal"></div>
-									<a href="/course_detail/<?=$item->id?>"><img  src="../../../udema/img/<?=$item->image_src?>" alt=""></a>
+									<a href="/course_detail/<?=$item->id?>"><img  src="/image/<?=$item->image_src?>" alt=""></a>
 									<div class="preview"><span>Preview course</span></div>
 								</figure>
 							</div>
@@ -309,10 +282,7 @@
 	<!-- page -->
 
 	<!-- COMMON SCRIPTS -->
-    <script src="../../../udema/js/jquery-3.7.1.min.js"></script>
-    <script src="../../../udema/js/common_scripts.js"></script>
-    <script src="../../../udema/js/main.js"></script>
-	<script src="../../../udema/assets/validate.js"></script>
+
   
 </body>
 </html>
