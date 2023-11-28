@@ -182,12 +182,12 @@
 										<div class="card-body">
 											<div class="list_lessons">
 												<ul>
-                                                    <?php foreach($lessons as $lesson):
-                                                        if($lesson->content_id == $item->id){
-                                                        ?>
-													<li><a href="<?=$lesson->link?>" class="video"><?=$lesson->name_lesson?></a><span>00:59</span></li>
+                                                    <?php foreach($lessons[$item['id']] as $lesson):
 
-                                                    <?php } endforeach; ?>
+                                                        ?>
+                                                            <li><a href="<?=$lesson->link?>" class="video"><?=$lesson->name_lesson?></a><span>00:59</span></li>
+
+                                                    <?php  endforeach; ?>
 												</ul>
 											</div>
 										</div>

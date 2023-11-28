@@ -24,8 +24,15 @@ class CourseController
         $content = ORM::forTable('content')
             ->where('course_id',$course_id)
             ->find_many();
-        $lessons = ORM::forTable('lessons')
-            ->find_many();
+        $lessonsArray = [];
+        foreach ($content as $item) {
+            $lessons = ORM::forTable('content')
+                ->join('lessons', ['lessons.content_id', '=', 'content.id'])
+                ->where('lessons.content_id', $item->id)
+                ->find_many();
+
+            $lessonsArray[$item->id] = $lessons;
+        }
         $comments = ORM::forTable('comments')
             ->join('users', array('comments.user_id', '=', 'users.id'))
             ->where('comments.course_id', $course_id)
@@ -33,7 +40,7 @@ class CourseController
         return $view->make('udema.course-detail',[
             'courses' => $courses,
             'content'=>$content,
-            'lessons'=>$lessons,
+            'lessons'=>$lessonsArray,
             'comments'=> $comments
 
         ]);

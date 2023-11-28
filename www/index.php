@@ -20,7 +20,6 @@ session_start();
 
 $router = Router::create();
 $router->setupView('Views');
-
 $router->get('/',[MainController::class,'mainPage']);
 $router->get('/register',[AuthController::class,'registrationPage']);
 $router->get('/login',[AuthController::class,'loginPage']);
